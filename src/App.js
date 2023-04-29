@@ -9,6 +9,7 @@ function App() {
 
   const [showForm, setShowForm] = useState(false);
   const [buttonText, setButtonText] = useState('new note');
+  const [notes, setNotes] = useState([]);
 
   const handleNewNoteClick = () => {
     setShowForm(true);
@@ -16,6 +17,8 @@ function App() {
   }
 
   const handleSaveNoteClick = () => {
+    const noteText = document.getElementById('textbox').value;
+    setNotes([...notes, noteText]);
     setShowForm(false);
     setButtonText('new note');
   }
@@ -41,6 +44,16 @@ function App() {
             {buttonText}
           </button>
         )}
+        <div className="Saved-notes">
+          <p>saved notes</p>
+          <div className="Notes-list">
+            {notes.map((note, index) => (
+              <div className="Note" key={index}>
+                {note}
+              </div>
+            ))}
+          </div>
+        </div>
       </header>
     </div>
   );
