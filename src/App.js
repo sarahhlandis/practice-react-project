@@ -24,6 +24,7 @@ function App() {
   }
 
 
+
   return (
     <div className="Notepad">
       <header className="App-header">
@@ -47,11 +48,11 @@ function App() {
         <div className="Saved-notes">
           <p>saved notes</p>
           <div className="Notes-list">
-            {notes.map((note, index) => (
-              <div className="Note" key={index}>
-                {note}
-              </div>
-            ))}
+          {notes.map((note, index) => (
+            <div className="Note" key={index}>
+                {note.slice(0, 20)}
+            </div>
+          ))}
           </div>
         </div>
       </header>

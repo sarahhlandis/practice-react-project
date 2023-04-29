@@ -1,6 +1,13 @@
 /* .App {
   text-align: center;
 } */
+
+.Saved-notes{
+  height: 40vmin;
+  width : 25vw;
+}
+
+
 #newNote {
   margin-bottom: 20px;
   justify-content: center;
@@ -19,16 +26,6 @@
   border-style: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: whitesmoke;
@@ -41,15 +38,3 @@
   color: lightsteelblue;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
