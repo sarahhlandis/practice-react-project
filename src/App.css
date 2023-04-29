@@ -9,7 +9,7 @@
 
 
 #newNote {
-  margin-bottom: 20px;
+  /* margin-top: 20px; */
   justify-content: center;
   align-items: center;
 }
@@ -17,13 +17,16 @@
 #notebox {
   height: 40vmin;
   width : 25vw;
+  margin-bottom: 20px;
 }
 
 #textbox {
   height: 40vmin;
   width : 25vw;
-  background-color: lightgoldenrodyellow;
+  background-color: lightpink;
   border-style: hidden;
+  font-size: 18px;
+  padding: 10px;
 }
 
 

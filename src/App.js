@@ -48,7 +48,7 @@ function App() {
     setShowForm(false);
     setButtonText('new note');
   }
-
+  
 
 
   return (
@@ -60,14 +60,14 @@ function App() {
         {/* <button id='newNote' onClick={handleNewNoteClick}>new note</button> */}
         {showForm && (
           <div>
-            <button id='newNote' onClick={handleSaveNoteClick}>
-              {buttonText}
-            </button>
             <div>
               <form id='notebox'>
                 <textarea id='textbox' value={noteText} onChange={(e) => setNoteText(e.target.value)}></textarea>
               </form>
             </div>
+            <button id='newNote' onClick={handleSaveNoteClick}>
+              {buttonText}
+            </button>
           </div>
         )}
         {!showForm && (
@@ -76,7 +76,7 @@ function App() {
           </button>
         )}
         <div className="Saved-notes">
-          <p>saved notes</p>
+          <p>saved notes ~</p>
           <div className="Notes-list">
           {notes.map((note, index) => (
             <div className="Note" key={index} onClick={() => handleNoteClick(note)}>
