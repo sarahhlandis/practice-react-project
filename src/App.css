@@ -1,5 +1,22 @@
-.App {
+/* .App {
   text-align: center;
+} */
+#newNote {
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+#notebox {
+  height: 40vmin;
+  width : 25vw;
+}
+
+#textbox {
+  height: 40vmin;
+  width : 25vw;
+  background-color: lightgoldenrodyellow;
+  border-style: hidden;
 }
 
 .App-logo {
@@ -14,14 +31,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: whitesmoke;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(20px + 2vmin);
+  color: lightsteelblue;
 }
 
 .App-link {
