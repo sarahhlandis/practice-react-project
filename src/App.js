@@ -22,18 +22,33 @@ function App() {
     setNoteText('');
   }
 
-  const handleSaveNoteClick = () => {
-    // const noteText = document.getElementById('textbox').value;
-    setNotes([...notes, noteText]);
-    setShowForm(false);
-    setButtonText('new note');
-  }
-
   const handleNoteClick = (noteText) => {
     setNoteText(noteText);
     setShowForm(true);
     setButtonText('update note');
   };
+
+  const handleSaveNoteClick = () => {
+    if (noteText.trim() === '') {
+      // don't save empty notes
+      return;
+    }
+  
+    const noteIndex = notes.findIndex((note) => note === noteText);
+    if (noteIndex >= 0) {
+      // note already exists, update it
+      const updatedNotes = [...notes];
+      updatedNotes[noteIndex] = noteText;
+      setNotes(updatedNotes);
+    } else {
+      // new note
+      setNotes([...notes, noteText]);
+    }
+    
+    setShowForm(false);
+    setButtonText('new note');
+  }
+
 
 
   return (
