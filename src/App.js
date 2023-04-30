@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 
 
 // let noteform = <div>
@@ -7,6 +7,16 @@ import React, { useState } from 'react';
 //   <textarea id='textbox' value={noteText} onChange={(e) => setNoteText(e.target.value)}></textarea>
 // </form>
 // </div>
+
+
+// const colors = [
+//   { name: 'pink', value: '#ffb6c1' },
+//   { name: 'yellow', value: '#fafad2' },
+//   { name: 'green', value: '#D5F6D5' },
+//   { name: 'blue', value: '#add8e6' }
+// ];
+
+
 
 function App() {
 
@@ -16,16 +26,31 @@ function App() {
   const [showForm, setShowForm] = useState(false);
   // button display text toggle
   const [buttonText, setButtonText] = useState('new note');
-  // notes array
-  const [notes, setNotes] = useState([]);
+  // notes array to be loaded from localstorage upon mounting
+  // const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(() => JSON.parse(localStorage.getItem('notes')) || []);
   // text of a note
   const [noteText, setNoteText] = useState('');
   // index of a note
   const [noteIndex, setNoteIndex] = useState(null);
   // delete button visibility toggle
   const [showDeleteButton, setShowDeleteButton] = useState(false);
+  
 
+  useEffect(() => {
+    // console.log(notes);
+    localStorage.setItem('notes', [JSON.stringify(notes)]);
+  }, [notes]);
+  
 
+  useEffect(() => {
+    const storedNotes = JSON.parse(localStorage.getItem('notes')) || [];
+    // console.log('Retrieved notes from local storage:', storedNotes);
+    if (storedNotes.length > 0) {
+      setNotes(storedNotes);
+    }
+  }, []);
+  
 
 
   const showNewNote = () => {
@@ -59,7 +84,7 @@ function App() {
       updatedNotes[noteIndex] = noteText;
     } else {
       // save as new note
-      updatedNotes.push(noteText);
+      updatedNotes.push(noteText)
     }
   
     setNotes(updatedNotes);
@@ -92,7 +117,7 @@ function App() {
           <div>
             <div>
               <form id='notebox'>
-                <textarea id='textbox' value={noteText} onChange={(e) => setNoteText(e.target.value)}></textarea>
+                <textarea id='textbox' value={noteText} onChange={(e) => setNoteText(e.target.value)}/>             
               </form>
             </div>
             <button id='newNoteButton' onClick={saveNote}>

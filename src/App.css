@@ -44,6 +44,7 @@
   border-style: hidden;
   font-size: 18px;
   padding: 10px;
+  /* color: lightslategray; */
 }
 
 .Note{
@@ -51,7 +52,7 @@
 }
 
 .Note:hover{
-  color: lightslategray;
+  color: lightslategrey;
 }
 
 .App-header {
