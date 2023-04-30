@@ -14,15 +14,28 @@
   align-items: center;
 }
 
+#newNoteButton:hover{
+  background-color: lightyellow;
+  border-style:double;
+  border-radius: 4px;
+
+}
+
 #deleteNoteButton {
   margin-left: 10px;
 }
 
-#notebox {
+#deleteNoteButton:hover {
+  background-color: lightyellow;
+  border-style:double;
+  border-radius: 4px;
+}
+
+/* #notebox {
   height: 40vmin;
   width : 25vw;
   margin-bottom: 20px;
-}
+} */
 
 #textbox {
   height: 40vmin;
@@ -33,6 +46,13 @@
   padding: 10px;
 }
 
+.Note{
+  font-size: calc(12px + 2vmin);
+}
+
+.Note:hover{
+  color: lightslategray;
+}
 
 .App-header {
   background-color: whitesmoke;

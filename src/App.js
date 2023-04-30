@@ -84,9 +84,9 @@ function App() {
   return (
     <div className="Notepad">
       <header className="App-header">
-        <p>
+        <h2>
           scribble
-        </p>
+        </h2>
         {/* <button id='newNote' onClick={showNewNote}>new note</button> */}
         {showForm && (
           <div>
