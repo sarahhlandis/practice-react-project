@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
-
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Spectral:ital,wght@0,200;1,200&display=swap');
 
 /* .App {
   text-align: center;
@@ -12,6 +12,18 @@
 
 h1{
   font-family: 'Pacifico', cursive;
+  text-shadow: lightpink 1px 3px;
+}
+
+p{
+  font-family: 'Spectral', serif;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+textarea{
+  font-family: 'Spectral', serif;
+  font-weight: bolder;
 }
 
 #newNoteButton {
@@ -53,8 +65,15 @@ h1{
   /* color: lightslategray; */
 }
 
+button{
+  font-family: 'Spectral', serif, italic;
+  font-weight:500;
+}
+
 .Note{
   font-size: calc(12px + 2vmin);
+  font-family: 'Spectral', serif, italic;
+  font-weight: lighter;
 }
 
 .Note:hover{
