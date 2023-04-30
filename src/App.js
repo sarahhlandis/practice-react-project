@@ -44,10 +44,10 @@ function App() {
   
 
   useEffect(() => {
-    const storedNotes = JSON.parse(localStorage.getItem('notes')) || [];
+    // const storedNotes = JSON.parse(localStorage.getItem('notes')) || [];
     // console.log('Retrieved notes from local storage:', storedNotes);
-    if (storedNotes.length > 0) {
-      setNotes(storedNotes);
+    if (notes.length > 0) {
+      setNotes(notes);
     }
   }, []);
   
