@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+
 /* .App {
   text-align: center;
 } */
@@ -7,6 +10,9 @@
   width : 25vw;
 }
 
+h1{
+  font-family: 'Pacifico', cursive;
+}
 
 #newNoteButton {
   /* margin-top: 20px; */
