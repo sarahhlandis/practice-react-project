@@ -22,7 +22,7 @@ function App() {
   const [noteText, setNoteText] = useState('');
   // index of a note
   const [noteIndex, setNoteIndex] = useState(null);
-  // delete button visibility
+  // delete button visibility toggle
   const [showDeleteButton, setShowDeleteButton] = useState(false);
 
 
@@ -47,6 +47,9 @@ function App() {
   const saveNote = () => {
     if (noteText.trim() === '') {
       // don't save empty notes
+      setShowForm(false);
+      setButtonText('new note');
+      setNoteText('');
       return;
     }
   
