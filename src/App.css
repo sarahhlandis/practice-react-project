@@ -8,10 +8,14 @@
 }
 
 
-#newNote {
+#newNoteButton {
   /* margin-top: 20px; */
   justify-content: center;
   align-items: center;
+}
+
+#deleteNoteButton {
+  margin-left: 10px;
 }
 
 #notebox {

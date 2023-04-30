@@ -11,9 +11,10 @@ import React, { useState } from 'react';
 function App() {
 
   // set up state variables 
+  //
   // note form
   const [showForm, setShowForm] = useState(false);
-  // button display text
+  // button display text toggle
   const [buttonText, setButtonText] = useState('new note');
   // notes array
   const [notes, setNotes] = useState([]);
@@ -21,6 +22,10 @@ function App() {
   const [noteText, setNoteText] = useState('');
   // index of a note
   const [noteIndex, setNoteIndex] = useState(null);
+  // delete button visibility
+  const [showDeleteButton, setShowDeleteButton] = useState(false);
+
+
 
 
   const showNewNote = () => {
@@ -35,6 +40,7 @@ function App() {
     setShowForm(true);
     setButtonText('update note');
     setNoteIndex(noteIndex);
+    setShowDeleteButton(true);
   }
 
 
@@ -58,6 +64,17 @@ function App() {
     setButtonText('new note');
     setNoteText('');
     setNoteIndex(null);
+    setShowDeleteButton(false);
+  }
+
+
+  const deleteNote = (index) => {
+    const updatedNotes = [...notes];
+    updatedNotes.splice(index, 1);
+    setNotes(updatedNotes);
+    setShowDeleteButton(false);
+    setShowForm(false);
+    setButtonText('new note');
   }
 
 
@@ -75,16 +92,21 @@ function App() {
                 <textarea id='textbox' value={noteText} onChange={(e) => setNoteText(e.target.value)}></textarea>
               </form>
             </div>
-            <button id='newNote' onClick={saveNote}>
+            <button id='newNoteButton' onClick={saveNote}>
               {buttonText}
             </button>
+            {showDeleteButton && (
+              <button id='deleteNoteButton' onClick={() => deleteNote(noteIndex)}>delete note</button>
+            )}
           </div>
         )}
+
         {!showForm && (
-          <button id='newNote' onClick={showNewNote}>
+          <button id='newNoteButton' onClick={showNewNote}>
             {buttonText}
           </button>
         )}
+
         <div className="Saved-notes">
           <p>saved notes ~</p>
           <div className="Notes-list">
