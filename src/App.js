@@ -10,45 +10,55 @@ import React, { useState } from 'react';
 
 function App() {
 
+  // set up state variables 
+  // note form
   const [showForm, setShowForm] = useState(false);
+  // button display text
   const [buttonText, setButtonText] = useState('new note');
+  // notes array
   const [notes, setNotes] = useState([]);
+  // text of a note
   const [noteText, setNoteText] = useState('');
+  // index of a note
+  const [noteIndex, setNoteIndex] = useState(null);
 
 
-  const handleNewNoteClick = () => {
+  const showNewNote = () => {
     setShowForm(true);
     setButtonText('save note');
     setNoteText('');
   }
 
-  const handleNoteClick = (noteText) => {
+  
+  const modifyNote = (noteText, noteIndex) => {
     setNoteText(noteText);
     setShowForm(true);
     setButtonText('update note');
-  };
+    setNoteIndex(noteIndex);
+  }
 
-  const handleSaveNoteClick = () => {
+
+  const saveNote = () => {
     if (noteText.trim() === '') {
       // don't save empty notes
       return;
     }
   
-    const noteIndex = notes.findIndex((note) => note === noteText);
-    if (noteIndex >= 0) {
+    const updatedNotes = [...notes];
+    if (noteIndex !== null) {
       // note already exists, update it
-      const updatedNotes = [...notes];
       updatedNotes[noteIndex] = noteText;
-      setNotes(updatedNotes);
     } else {
-      // new note
-      setNotes([...notes, noteText]);
+      // save as new note
+      updatedNotes.push(noteText);
     }
-    
+  
+    setNotes(updatedNotes);
     setShowForm(false);
     setButtonText('new note');
+    setNoteText('');
+    setNoteIndex(null);
   }
-  
 
 
   return (
@@ -57,7 +67,7 @@ function App() {
         <p>
           scribble
         </p>
-        {/* <button id='newNote' onClick={handleNewNoteClick}>new note</button> */}
+        {/* <button id='newNote' onClick={showNewNote}>new note</button> */}
         {showForm && (
           <div>
             <div>
@@ -65,13 +75,13 @@ function App() {
                 <textarea id='textbox' value={noteText} onChange={(e) => setNoteText(e.target.value)}></textarea>
               </form>
             </div>
-            <button id='newNote' onClick={handleSaveNoteClick}>
+            <button id='newNote' onClick={saveNote}>
               {buttonText}
             </button>
           </div>
         )}
         {!showForm && (
-          <button id='newNote' onClick={handleNewNoteClick}>
+          <button id='newNote' onClick={showNewNote}>
             {buttonText}
           </button>
         )}
@@ -79,7 +89,7 @@ function App() {
           <p>saved notes ~</p>
           <div className="Notes-list">
           {notes.map((note, index) => (
-            <div className="Note" key={index} onClick={() => handleNoteClick(note)}>
+            <div className="Note" key={index} onClick={() => modifyNote(note, index)}>
               {note.slice(0, 20)}{note.length > 20 ? '...' : ''}
             </div>
           ))}
