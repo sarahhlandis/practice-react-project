@@ -49,7 +49,7 @@ function App() {
     if (notes.length > 0) {
       setNotes(notes);
     }
-  }, []);
+  }, [notes]);
   
 
 
