@@ -53,14 +53,14 @@ function App() {
   
 
 
-  const showNewNote = () => {
+  const handleShowNewNoteClick = () => {
     setShowForm(true);
     setButtonText('save note');
     setNoteText('');
   }
 
   
-  const modifyNote = (noteText, noteIndex) => {
+  const handleModifyNoteClick = (noteText, noteIndex) => {
     setNoteText(noteText);
     setShowForm(true);
     setButtonText('update note');
@@ -69,7 +69,7 @@ function App() {
   }
 
 
-  const saveNote = () => {
+  const handleSaveNoteClick = () => {
     if (noteText.trim() === '') {
       // don't save empty notes
       setShowForm(false);
@@ -96,7 +96,7 @@ function App() {
   }
 
 
-  const deleteNote = (index) => {
+  const handleDeleteNoteClick = (index) => {
     const updatedNotes = [...notes];
     updatedNotes.splice(index, 1);
     setNotes(updatedNotes);
@@ -112,7 +112,7 @@ function App() {
         <h1>
           scribble
         </h1>
-        {/* <button id='newNote' onClick={showNewNote}>new note</button> */}
+        {/* <button id='newNote' onClick={handleShowNewNoteClick}>new note</button> */}
         {showForm && (
           <div>
             <div>
@@ -120,17 +120,17 @@ function App() {
                 <textarea id='textbox' value={noteText} onChange={(e) => setNoteText(e.target.value)}/>             
               </form>
             </div>
-            <button id='newNoteButton' onClick={saveNote}>
+            <button id='newNoteButton' onClick={handleSaveNoteClick}>
               {buttonText}
             </button>
             {showDeleteButton && (
-              <button id='deleteNoteButton' onClick={() => deleteNote(noteIndex)}>delete note</button>
+              <button id='handleDeleteNoteClickButton' onClick={() => handleDeleteNoteClick(noteIndex)}>delete note</button>
             )}
           </div>
         )}
 
         {!showForm && (
-          <button id='newNoteButton' onClick={showNewNote}>
+          <button id='newNoteButton' onClick={handleShowNewNoteClick}>
             {buttonText}
           </button>
         )}
@@ -139,7 +139,7 @@ function App() {
           <p>saved notes ~</p>
           <div className="Notes-list">
           {notes.map((note, index) => (
-            <div className="Note" key={index} onClick={() => modifyNote(note, index)}>
+            <div className="Note" key={index} onClick={() => handleModifyNoteClick(note, index)}>
               {note.slice(0, 20)}{note.length > 20 ? '...' : ''}
             </div>
           ))}
